@@ -11,5 +11,5 @@ As just mentioned, if some kind of changes happen and the nature of that thing c
 ### Type can be designed as *immutable*
 In fact, `string` is designed to be *immutable* as well as `DateTime`, `Guid`, `Regex`, etc. We are allowed to create such immutable types so that caller has to create new instances all the time for security purpose such as thread safety, reliability or some reasons else. Any change attempt to the object will fail.
 
-## Variable and data (value)
+## Variable vs. data (value)
 Variable is created to store data. The data can be value of *Value Type* or *Reference Type* instance. For *Value Type*, variable holds all the information of that instance. For *Reference Type*, variable just holds the reference (i.e. *pointer*). The content of variable is always changeable unless the variable is *readonly* or *constant*. So, mutable variable is different from mutable type. They are two matters.
