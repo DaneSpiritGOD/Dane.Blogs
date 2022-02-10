@@ -8,25 +8,33 @@ Let's look at the code below, what does the two variables' memory layout look li
 class RefType
 {
     public int A { get; set; }
-    public int B { get; set; }
+
+    int b;
+    public int B => b;
+
+    public void SetB(int value) => b = value;
 }
 
 struct ValType
 {
     public int A { get; set; }
-    public int B { get; set; }
+
+    int b;
+    public int B => b;
+
+    public void SetB(int value) => b = value;
 }
 
 var r = new RefType
 {
     A = 8,
-    B = 10,
 };
+r.SetB(10);
 
 var v = new ValType
 {
     A = 80,
-    B = 100,
 };
+v.SetB(100);
 ```
 ![difference-in-memory-between-value-and-reference.png](../../Resources/Images/difference-in-memory-between-value-and-reference.png)
