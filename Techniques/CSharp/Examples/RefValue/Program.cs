@@ -67,7 +67,7 @@ struct ValType
 
 class Mix
 {
-    public RefType Ref { get; set; }
+    public RefType? Ref { get; set; }
 
     ValType val;
     public ValType Val
