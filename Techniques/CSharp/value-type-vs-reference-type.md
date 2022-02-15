@@ -60,4 +60,4 @@ Let's take a look at the code snippet in [Program.cs](Examples/RefValue/Program.
 > Mix.Value Obj: A = 9999, B = 5000  
 
 As we can see in the output results, we are even unable to modify the value directly by `mix.Val.A = 888;` or `mix.Val.SetB(1000);` because `mix.Value` returns a **copied value** and the new value copied is not defined as a variable. Then we can't set member to that new value.  
-If we really want to revise the data in that value-type value, we have to grant access to the variable that hosts the value. Only operations on the variable can take effects on the value.
+If we really want to revise the data in that value-type value, we have to grant access to the variable that hosts the value. Only operations on the variable can take effects on the value. So, *to make your code less error-prone and more robust, define and use immutable value types.*
