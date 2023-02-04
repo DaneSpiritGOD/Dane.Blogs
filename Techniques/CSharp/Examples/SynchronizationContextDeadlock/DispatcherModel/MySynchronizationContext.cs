@@ -1,7 +1,6 @@
 using System.Collections.Concurrent;
-using System.Threading;
 
-namespace TypicalCase;
+namespace DispatcherModel;
 
 class MySynchronizationContext : SynchronizationContext
 {
