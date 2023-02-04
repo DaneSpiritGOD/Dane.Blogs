@@ -2,7 +2,7 @@ namespace Workload;
 
 public class MyJob
 {
-    public virtual int DoWork(int seed)
+    public int DoWork(int seed)
     {
         Console.Out.WriteLine("******************** Before GetResult call ********************");
 

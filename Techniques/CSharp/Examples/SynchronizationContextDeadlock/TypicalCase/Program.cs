@@ -5,8 +5,8 @@ using Workload;
 
 var window = new MyWindow();
 window.Showed += delegate {
-    var workload = new MyJob();
-    workload.DoWork(10);
+    var myJob = new MyJob();
+    myJob.DoWork(10);
 };
 
 MyApplication.Run(window);
