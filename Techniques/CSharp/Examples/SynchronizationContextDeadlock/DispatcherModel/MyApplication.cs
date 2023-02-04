@@ -9,12 +9,13 @@ public class MyApplication
         var tw = Console.Out;
 
         var previousSynchronizationContext = SynchronizationContext.Current;
+
+        ConcurrentQueue<(Action<object?>, object?)> queue = new();
+        var mySynchronizationContext = new MySynchronizationContext(queue, tw);
+        SynchronizationContext.SetSynchronizationContext(mySynchronizationContext);
+        
         try
         {
-            ConcurrentQueue<(Action<object?>, object?)> queue = new();
-            var mySynchronizationContext = new MySynchronizationContext(queue, tw);
-            SynchronizationContext.SetSynchronizationContext(mySynchronizationContext);
-
             mySynchronizationContext.Post(s =>
             {
                 window.Show();
