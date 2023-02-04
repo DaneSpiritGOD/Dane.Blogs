@@ -1,6 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System;
 using System.Collections.Concurrent;
 using TypicalCase;
 
@@ -22,12 +21,15 @@ try
 
     while (true)
     {
+        tw.WriteLine("^^^^^^^^^^^^^^^^^^^^ Looking for a job... ^^^^^^^^^^^^^^^^^^^^");
         if (!queue.TryDequeue(out var item))
         {
+            tw.WriteLine("^^^^^^^^^^^^^^^^^^^^ No job found ^^^^^^^^^^^^^^^^^^^^");
             Thread.Sleep(100);
             continue;
         }
 
+        tw.WriteLine("^^^^^^^^^^^^^^^^^^^^ A job found. Executing... ^^^^^^^^^^^^^^^^^^^^");
         item.Item1(item.Item2);
     }
 }
