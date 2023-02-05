@@ -190,7 +190,7 @@ MyApplication.Run(window);
 
 ### **DEADLOCK** comes!
 
-Let's run the code snippet above. Please see the whole project in [DispatcherModel](https://github.com/DaneSpiritGOD/Dane.Blogs/tree/main/Techniques/CSharp/Examples/SynchronizationContextDeadlock/DispatcherModel). (**Note that, to track the deadlock in our topic, I add trace logs at some places additionally.**)
+Let's run the code snippet above. Please see the whole project in [DispatcherModel](Examples/SynchronizationContextDeadlock/DispatcherModel). (**Note that, to track the deadlock in our topic, I add trace logs at some places additionally.**)
 
 ``` log
 // post of call to mainWindow.Show
@@ -250,7 +250,7 @@ To answer the two questions above, we need to comprehend the mechanism of [TAP](
 
 1. DO NOT mix use of sync and async. See [Don't block, await instead](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/#dont-block-await-instead).
 2. Avoid capturing current synchronization context before `await` if you're sure what you are calling has nothing to do with UI. (*I mean you have understood the stuff all above. To be honest, I apply the means below only in test.*)
-    1. Create a new async method. Wrap the async one we need after a call to `await Task.Delay(1).ConfigureAwait(false);`. See [Solution 1](https://github.com/DaneSpiritGOD/Dane.Blogs/blob/main/Techniques/CSharp/Examples/SynchronizationContextDeadlock/Solution1/Program.cs). Notes:
+    1. Create a new async method. Wrap the async one we need after a call to `await Task.Delay(1).ConfigureAwait(false);`. See [Solution 1](Examples/SynchronizationContextDeadlock/Solution1/Program.cs). Notes:
         1. There is no need to use `.ConfigureAwait(false)` wherever possible. Only one in UI layer is sufficient enough.
         2. `await Task.Delay(1)` will yield current execution. Apparently, it leads to impact on performance.
-    2. Before we call `.GetResult()`, install a default context on current thread and restore after the blocking call is done. See [Solution 2](https://github.com/DaneSpiritGOD/Dane.Blogs/blob/main/Techniques/CSharp/Examples/SynchronizationContextDeadlock/Solution2/Program.cs).
+    2. Before we call `.GetResult()`, install a default context on current thread and restore after the blocking call is done. See [Solution 2](Examples/SynchronizationContextDeadlock/Solution2/Program.cs).
